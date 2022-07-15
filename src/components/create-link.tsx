@@ -71,7 +71,7 @@ const CreateLinkForm: NextPage = () => {
         </span>
       )}
       <div className="flex items-center">
-        <span className="font-medium mr-2">{url}/</span>
+        <span className="font-medium mr-2">{url.replace(/^https?:\/\/www./, "")}/</span>
         <input
           type="text"
           onChange={(e) => {
