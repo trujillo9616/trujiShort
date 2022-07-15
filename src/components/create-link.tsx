@@ -71,7 +71,7 @@ const CreateLinkForm: NextPage = () => {
         </span>
       )}
       <div className="flex items-center">
-        <span className="font-medium mr-2">{url.replace(/^https?:\/\/www./, "")}/</span>
+        <span className="font-medium mr-8">{url.replace(/^https?:\/\/www./, "")}/</span>
         <input
           type="text"
           onChange={(e) => {
@@ -94,7 +94,7 @@ const CreateLinkForm: NextPage = () => {
           value="Random"
           className="rounded bg-pink-500 py-1.5 px-1 font-bold cursor-pointer ml-2"
           onClick={() => {
-            const slug = nanoid();
+            const slug = nanoid(6);
             setForm({
               ...form,
               slug,
