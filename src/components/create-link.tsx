@@ -34,7 +34,7 @@ const CreateLinkForm: NextPage = () => {
   if (createSlug.status === "success") {
     return (
       <>
-        <h1 className="text-9xl mt-40 mb-3">You're Welcome.</h1>
+        <h1 className="text-8xl mt-10 mb-3 text-center md:text-9xl">You're Welcome.</h1>
         <Spacer y={4} />
         <div className="grid gap-8 items-start justify-center mt-3">
             <div className="relative group">
@@ -60,7 +60,7 @@ const CreateLinkForm: NextPage = () => {
                 <span className="pr-6 text-gray-100">{`${url.replace(regex, "")}/${form.slug}`}</span>
                 <Tooltip content={"Copy to clipboard!"} color="secondary" >
                   <button
-                    onClick={() => copy(`${url}/${form.slug}`)}
+                    onClick={() => copy(`${url.replace(regex, "")}/${form.slug}`)}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -87,20 +87,22 @@ const CreateLinkForm: NextPage = () => {
 
   return (
     <>
-      <h1 className="text-9xl mt-40 mb-3">Links made easy.</h1>
+      <h1 className="text-8xl mt-10 mb-3 text-center md:text-9xl">Links made easy.</h1>
+      <Spacer y={4} />
       <form
         onSubmit={(e) => {
           e.preventDefault();
           createSlug.mutate({ ...form });
         }}
-        className="flex flex-col justify-center h-screen sm:w-2/3 md:w-1/2 lg:w-1/3"
+        className="flex flex-col justify-center items-center"
       >
         {slugCheck.data?.used && (
           <span className="font-medium mr-2 text-center text-red-500">
             Slug already in use.
           </span>
         )}
-          <div className="grid gap-8 items-start justify-center mt-3">
+        <div className="mx-3">
+          <div className="flex flex-col gap-8 mt-3">
             <div className="relative group">
               <div
                 className="
@@ -121,7 +123,7 @@ const CreateLinkForm: NextPage = () => {
                 className="relative px-7 py-4 bg-black rounded-lg leading-none
           flex items-center divide-x divide-gray-600"
               >
-                <span className="flex items-center space-x-5">
+                <span className="flex items-center space-x-1 md:space-x-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -136,7 +138,7 @@ const CreateLinkForm: NextPage = () => {
                       d="M13 10V3L4 14h7v7l9-11h-7z"
                     />
                   </svg>
-                  <span className="pr-6 text-gray-100">{url.replace(/^https?:\/\/www./, "")}</span>
+                  <span className="pr-6 text-gray-100 text-xs md:text-lg">{url.replace(/^https?:\/\/www./, "")}</span>
                 </span>
                 <span className="flex items-center space-x-3">
                   <input
@@ -152,7 +154,7 @@ const CreateLinkForm: NextPage = () => {
                     placeholder="Type here..."
                     className={`pl-6 text-indigo-400
                     group-hover:text-indigo-300 transition duration-200 
-                    bg-transparent border-none focus:ring-0 ${slugInput}`}
+                    bg-transparent border-none focus:ring-0 text-sm md:text-lg ${slugInput}`}
                     value={form.slug}
                     pattern={"^[-a-zA-Z0-9]+$"}
                     title="Only letters, numbers, and dashes :)"
@@ -194,7 +196,7 @@ const CreateLinkForm: NextPage = () => {
           placeholder="https://ridiculouslylonglinkthatisobivoulsynotreal.com"
           className="text-white my-1 p-2 bg-transparent border-0
           shadow-sm border-slate-300 placeholder-slate-400 
-          focus:outline-none block w-full sm:text-md 
+          focus:outline-none block w-full text-sm md:text-lg 
           border-b-2
           focus:ring-0"
           required
@@ -204,9 +206,11 @@ const CreateLinkForm: NextPage = () => {
           type="submit"
           value="Shorten Link"
           className="rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
-          p-2 font-bold cursor-pointer shadow-lg shadow-purple-500/50"
+          p-2 font-bold cursor-pointer shadow-lg shadow-purple-500/50 w-full"
           disabled={slugCheck.isFetched && slugCheck.data!.used}
         />
+        <Spacer y={2} />
+        </div>
       </form>
     </>
   );
