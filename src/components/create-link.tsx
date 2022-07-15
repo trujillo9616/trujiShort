@@ -70,8 +70,9 @@ const CreateLinkForm: NextPage = () => {
           Slug already in use.
         </span>
       )}
-      <div className="flex items-center">
-        <span className="font-medium mr-8">{url.replace(/^https?:\/\/www./, "")}/</span>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+        <span className="font-medium mr-2">{url.replace(/^https?:\/\/www./, "")}/</span>
         <input
           type="text"
           onChange={(e) => {
@@ -83,12 +84,13 @@ const CreateLinkForm: NextPage = () => {
           }}
           minLength={1}
           placeholder="slug"
-          className={slugInput}
+          className={`${slugInput} w-20`}
           value={form.slug}
           pattern={"^[-a-zA-Z0-9]+$"}
           title="Only letters, numbers, and dashes :)"
           required
         />
+        </div>
         <input
           type="button"
           value="Random"
