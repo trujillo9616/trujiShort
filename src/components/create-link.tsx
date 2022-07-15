@@ -193,7 +193,7 @@ const CreateLinkForm: NextPage = () => {
         <input
           type="url"
           onChange={(e) => setForm({ ...form, url: e.target.value })}
-          placeholder="https://ridiculouslylonglinkthatisobivoulsynotreal.com"
+          placeholder="https://ridiculouslylonglinkthatisobvioulsynotreal.com"
           className="text-white my-1 p-2 bg-transparent border-0
           shadow-sm border-slate-300 placeholder-slate-400 
           focus:outline-none block w-full text-sm md:text-lg 
