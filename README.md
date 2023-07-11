@@ -1,1 +1,1 @@
-# Joltik - Link Shortener
+# TrujiShort - Link Shortener
